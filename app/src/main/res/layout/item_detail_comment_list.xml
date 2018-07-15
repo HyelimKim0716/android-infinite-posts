@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="comment"
+            type="com.riiid.infiniteposts.riiidpostlist.data.model.Comment" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/post_item_margin">
+
+        <TextView
+            android:id="@+id/commentItem_tvEmail"
+            style="@style/CommentItem.CommentEmailTextView"
+            android:text="@{comment.email}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            style="@style/CommentItem.CommentBodyTextView"
+            android:text="@{comment.body}"
+            app:layout_constraintTop_toBottomOf="@id/commentItem_tvEmail"
+            app:layout_constraintStart_toStartOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</layout>
