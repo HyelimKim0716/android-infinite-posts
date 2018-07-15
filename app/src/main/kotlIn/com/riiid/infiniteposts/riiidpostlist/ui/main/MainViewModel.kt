@@ -23,7 +23,7 @@ class MainViewModel(val postApi: PostApi) {
 
     fun loadPosts() {
 
-        postApi.getPosts(0, 10)
+        postApi.getPosts(0, 20)
                 .subscribe({
                     postList.addAll(it)
                 }, {
