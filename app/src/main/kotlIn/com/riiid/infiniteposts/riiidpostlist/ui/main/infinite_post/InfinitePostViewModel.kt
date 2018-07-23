@@ -9,8 +9,9 @@ import com.riiid.infiniteposts.riiidpostlist.data.model.ServerPhoto
 import com.riiid.infiniteposts.riiidpostlist.data.model.ServerPost
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
+import retrofit2.Retrofit
 
-class InfinitePostViewModel(private val postApi: PostApi, private val photoApi: PhotoApi, private val postRepository: PostRepository) {
+class InfinitePostViewModel(private val retrofit: Retrofit, private val postApi: PostApi, private val photoApi: PhotoApi, private val postRepository: PostRepository) {
 
     val infinitePostViewEventSender
             = PublishSubject.create<Pair<InfinitePostViewEvent, Any>>().apply { subscribeOn(Schedulers.io()) }
@@ -31,7 +32,7 @@ class InfinitePostViewModel(private val postApi: PostApi, private val photoApi: 
         serverPostList.clear()
         serverPhotoList.clear()
 
-        postApi.getPosts(0, 20)
+        retrofit.create(PostApi::class.java).getPosts(0, 20)
                 .subscribe({
                     LogMgr.d("postApi : $it")
                     serverPostList.addAll(it)
@@ -48,7 +49,7 @@ class InfinitePostViewModel(private val postApi: PostApi, private val photoApi: 
                         setPostList()
                 })
 
-        photoApi.getPhotos(0, 20)
+        retrofit.create(PhotoApi::class.java).getPhotos(0, 20)
                 .subscribe({
                     it.forEach {
                         LogMgr.d("photoApi thumbnail : ${it.albumId}, ${it.url}, ${it.thumbnailUrl}")
@@ -78,7 +79,7 @@ class InfinitePostViewModel(private val postApi: PostApi, private val photoApi: 
                 id = serverPost.id
                 title = serverPost.title
                 body = serverPost.body
-                thumbnailUrl = serverPhotoList[index].thumbnailUrl
+                thumbnailUrl = serverPhotoList[index].url
             }
             postList.add(postItem)
         }

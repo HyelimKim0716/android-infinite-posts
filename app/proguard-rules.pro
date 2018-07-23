@@ -24,6 +24,9 @@
 -ignorewarnings
 -dontwarn java.lang.ClassValue
 
+#retrofit
+
+
 #realm
 -keep class.io.realm.annotations.RealmModule
 -keep @io.realm.annotations.RealmModule class *

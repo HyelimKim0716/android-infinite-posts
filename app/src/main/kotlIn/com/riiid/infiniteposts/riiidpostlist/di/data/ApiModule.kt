@@ -46,7 +46,6 @@ class ApiModule {
 
 
     @Provides
-    @Singleton
     fun provideRetrofit(gson: Gson, rxAdapter: RxJava2CallAdapterFactory, okHttpClientBuilder: OkHttpClient.Builder): Retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(rxAdapter)

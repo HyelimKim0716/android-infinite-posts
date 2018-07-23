@@ -9,6 +9,7 @@ import com.riiid.infiniteposts.riiidpostlist.ui.main.favorite_post.FavoritePostV
 import com.riiid.infiniteposts.riiidpostlist.ui.main.infinite_post.InfinitePostViewModel
 import dagger.Module
 import dagger.Provides
+import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Module
@@ -24,8 +25,8 @@ class ViewModelModule {
 
     @Provides
     @Singleton
-    fun provideInfinitePostViewModel(postApi: PostApi, photoApi: PhotoApi, postRepository: PostRepository)
-            = InfinitePostViewModel(postApi, photoApi, postRepository)
+    fun provideInfinitePostViewModel(retrofit: Retrofit, postApi: PostApi, photoApi: PhotoApi, postRepository: PostRepository)
+            = InfinitePostViewModel(retrofit, postApi, photoApi, postRepository)
 
     @Provides
     @Singleton
