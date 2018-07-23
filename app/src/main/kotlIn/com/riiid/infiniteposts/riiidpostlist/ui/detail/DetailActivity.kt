@@ -1,10 +1,9 @@
 package com.riiid.infiniteposts.riiidpostlist.ui.detail
 
 import android.os.Bundle
-import android.widget.Toolbar
 import com.riiid.infiniteposts.riiidpostlist.R
 import com.riiid.infiniteposts.riiidpostlist.base.BaseBindingActivity
-import com.riiid.infiniteposts.riiidpostlist.data.model.Post
+import com.riiid.infiniteposts.riiidpostlist.data.model.ServerPost
 import com.riiid.infiniteposts.riiidpostlist.databinding.ActivityDetailBinding
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -52,8 +51,8 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>() {
         binding.detailViewModel = viewModel
         detail_rvComments.adapter = adapter
 
-        val post = intent.getParcelableExtra<Post>("post")
-        viewModel.post = post
+        val post = intent.getParcelableExtra<ServerPost>("serverPost")
+        viewModel.serverPost = post
         viewModel.loadComments()
     }
 

@@ -1,22 +1,22 @@
 package com.riiid.infiniteposts.riiidpostlist.ui.detail
 
 import android.util.Log
-import com.riiid.infiniteposts.riiidpostlist.data.PostApi
+import com.riiid.infiniteposts.riiidpostlist.data.api.PostApi
 import com.riiid.infiniteposts.riiidpostlist.data.model.Comment
-import com.riiid.infiniteposts.riiidpostlist.data.model.Post
+import com.riiid.infiniteposts.riiidpostlist.data.model.ServerPost
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
 class DetailViewModel(private val postApi: PostApi) {
     val tag = "detailViewModel"
-    var post: Post ?= null
+    var serverPost: ServerPost ?= null
 
     val detailViewEventSender = PublishSubject.create<Pair<DetailViewEvent, Any>>().apply { subscribeOn(Schedulers.io()) }
     val commentList = ArrayList<Comment>()
 
     fun loadComments() {
 
-        post?.let {
+        serverPost?.let {
             postApi.getComments(it.id)
                     .subscribe({
                         commentList.addAll(it)

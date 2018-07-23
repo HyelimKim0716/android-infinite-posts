@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RiiidPostList</string>
+
+    <string name="infinite_post_list_page_title">ServerPost</string>
+    <string name="favorite_post_list_page_title">Favorite ServerPost</string>
+
 </resources>

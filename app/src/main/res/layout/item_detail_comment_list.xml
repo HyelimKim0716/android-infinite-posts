@@ -10,7 +10,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/post_item_margin">
+        android:layout_marginTop="@dimen/default_margin">
 
         <TextView
             android:id="@+id/commentItem_tvEmail"

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.riiid.infiniteposts.riiidpostlist.ui.main.favorite_post.FavoritePostViewModel" />
+    </data>
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/default_margin" >
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/favoriteUsers_clSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/favoriteUsers_btnSearch"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:background="@drawable/selector_ic_search"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:onClick="@{() -> viewModel.searchFavoriteUsers()}" />
+
+            <EditText
+                android:id="@+id/favoriteUsers_etUserName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.userName}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/favoriteUsers_btnSearch"
+                android:singleLine="true"
+                android:lines="1"
+                android:maxLines="1" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/favoriteUsers_rvFavoriteUsers"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toBottomOf="@id/favoriteUsers_clSearch"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layoutManager="android.support.v7.widget.GridLayoutManager"
+            android:scrollbars="vertical" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

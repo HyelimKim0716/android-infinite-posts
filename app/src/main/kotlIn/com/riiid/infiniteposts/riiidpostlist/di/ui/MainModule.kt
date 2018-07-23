@@ -1,7 +1,7 @@
 package com.riiid.infiniteposts.riiidpostlist.di.ui
 
-import com.riiid.infiniteposts.riiidpostlist.ui.main.MainPostListAdapter
-import com.riiid.infiniteposts.riiidpostlist.ui.main.MainViewModel
+import com.riiid.infiniteposts.riiidpostlist.ui.main.favorite_post.FavoritePostFragment
+import com.riiid.infiniteposts.riiidpostlist.ui.main.infinite_post.InfinitePostFragment
 import dagger.Module
 import dagger.Provides
 
@@ -9,6 +9,8 @@ import dagger.Provides
 class MainModule {
 
     @Provides
-    fun providePostRecyclerViewAdapter(viewModel: MainViewModel)
-            = MainPostListAdapter(viewModel)
+    fun provideInfinitePostFragment() = InfinitePostFragment()
+
+    @Provides
+    fun provideFavoritePostFragment() = FavoritePostFragment()
 }

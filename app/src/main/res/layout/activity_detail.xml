@@ -15,20 +15,20 @@
 
         <TextView
             android:id="@+id/detail_tvPostTitle"
-            style="@style/PostItem.PostTitleTextView"
-            android:layout_marginTop="@dimen/post_item_margin"
-            android:layout_marginLeft="@dimen/post_item_margin"
+            style="@style/PostItemViewHolder.PostTitleTextView"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/default_margin"
             android:text="Title"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/detail_tvPostTitleValue"
-            style="@style/PostItem.PostTitleValueTextView"
+            style="@style/PostItemViewHolder.PostTitleValueTextView"
             app:layout_constraintHorizontal_weight="1"
-            android:layout_marginTop="@dimen/post_item_margin"
-            android:layout_marginLeft="@dimen/post_item_margin"
-            android:text="@{detailViewModel.post.title}"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:text="@{detailViewModel.serverPost.title}"
             app:layout_constraintTop_toBottomOf="@id/detail_tvPostTitle"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -55,8 +55,8 @@
                 android:scrollbars="vertical"
                 app:layout_constraintTop_toBottomOf="@id/detail_tvCommentTitle"
                 app:layout_constraintStart_toStartOf="parent"
-                android:paddingStart="@dimen/list_padding"
-                android:paddingEnd="@dimen/list_padding" />
+                android:paddingStart="@dimen/default_padding"
+                android:paddingEnd="@dimen/default_padding" />
         </android.support.constraint.ConstraintLayout>
 
 

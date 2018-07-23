@@ -1,9 +1,10 @@
-package com.riiid.infiniteposts.riiidpostlist.di
+package com.riiid.infiniteposts.riiidpostlist.di.data
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.riiid.infiniteposts.riiidpostlist.data.PostApi
+import com.riiid.infiniteposts.riiidpostlist.data.api.PhotoApi
+import com.riiid.infiniteposts.riiidpostlist.data.api.PostApi
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers
@@ -45,6 +46,7 @@ class ApiModule {
 
 
     @Provides
+    @Singleton
     fun provideRetrofit(gson: Gson, rxAdapter: RxJava2CallAdapterFactory, okHttpClientBuilder: OkHttpClient.Builder): Retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(rxAdapter)
@@ -54,7 +56,9 @@ class ApiModule {
 
 
     @Provides
-    @Singleton
     fun provideApiService(retrofit: Retrofit): PostApi = retrofit.create(PostApi::class.java)
+
+    @Provides
+    fun providePhotoApiService(retrofit: Retrofit): PhotoApi = retrofit.create(PhotoApi::class.java)
 
 }

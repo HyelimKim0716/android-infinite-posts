@@ -15,27 +15,63 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainActivity">
 
-        <TextView
-            android:id="@+id/main_tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/main_title_margin"
-            android:layout_marginLeft="@dimen/main_title_margin"
-            android:text="@{viewModel.title}"
-            android:textSize="20sp"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        <!--<TextView-->
+            <!--android:id="@+id/main_tvTitle"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="@dimen/main_title_margin"-->
+            <!--android:layout_marginLeft="@dimen/main_title_margin"-->
+            <!--android:text="@{viewModel.title}"-->
+            <!--android:textSize="20sp"-->
+            <!--android:textColor="@color/colorPrimary"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent" />-->
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/main_rvPosts"
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/main_rvPosts"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--app:layout_constraintVertical_weight="1"-->
+            <!--android:scrollbars="vertical"-->
+            <!--app:layoutManager="android.support.v7.widget.LinearLayoutManager"-->
+            <!--android:padding="@dimen/default_padding"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/main_tvTitle" />-->
+
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/main_appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/main_toolbar"
+                style="@style/Toolbar"
+                app:title="@string/app_name"
+                app:contentInsetStart="@dimen/default_margin"
+                app:titleMarginStart="32dp" />
+                <!--app:logo="@mipmap/ic_github"-->
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/main_tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="fixed"
+            app:layout_constraintTop_toBottomOf="@id/main_appBarLayout"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+            app:tabTextColor="@color/colorPrimaryDark" />
+
+        <!--app:tabIndicatorColor="@color/green_700"-->
+        <!--app:tabSelectedTextColor="@color/green_500"-->
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/main_viewPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintVertical_weight="1"
-            android:scrollbars="vertical"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            android:padding="@dimen/list_padding"
-            app:layout_constraintTop_toBottomOf="@id/main_tvTitle" />
+            app:layout_constraintTop_toBottomOf="@id/main_tabLayout"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>
